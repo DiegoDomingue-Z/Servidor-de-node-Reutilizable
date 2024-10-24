@@ -3,10 +3,11 @@ const { usuarioGet,
 usuarioPUT,
 usuarioPOST,
 usuarioPATCH,
-usuarioDELETE } = require('../controllers/usuarios');
+usuarioDELETE, 
+usuariossii} = require('../controllers/usuarios');
 const router = Router();
 
-router.get('/', usuarioGet);
+router.get('/', usuariossii);
 
 router.put('/:idDelUsuario',  usuarioPUT);
 

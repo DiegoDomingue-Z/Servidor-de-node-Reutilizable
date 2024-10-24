@@ -1,6 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
+const db = require('../db/config');
 
 class Server {
 
@@ -11,6 +12,7 @@ class Server {
 
         this.middlewares();
         this.rutas();
+        this.conectarBD();
     }
 
     middlewares(){
@@ -24,6 +26,11 @@ class Server {
         //directorio publico
         this.app.use(express.static('public'));
     }
+
+    async conectarBD() {
+        await db();
+    }
+
 
     //metodo de las rutas
     rutas(){

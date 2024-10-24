@@ -1,6 +1,18 @@
 const { response } = require('express');
+const db = require('../db/config');
 
-const usuarioGet = (req, res = response) => {
+const usuariossii = (req, res = response) => {
+    
+
+    db.query('SELECT * FROM usuarios', (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        res.json(results);
+    });
+};
+
+const usuarioGET = (req, res = response) => {
      
     const { nombre= 'no name' } = req.query;
     res.status(403).json({
@@ -59,9 +71,10 @@ const usuarioDELETE = (req, res = response) => {
 }
 
 module.exports = {
-    usuarioGet,
+    usuariossii,
+    usuarioGET,
     usuarioPOST,
     usuarioPUT,
     usuarioPATCH,
     usuarioDELETE
-}
+} 
